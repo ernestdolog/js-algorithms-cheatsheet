@@ -11,6 +11,62 @@ goest through the array, swaps 2 values if they are in the incorrect order... re
         arr[idx1] = arr[idx2];
         arr[idx2] = temp;
     }
+    const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
  - return the sorted array
 
-example coming soon...
+``` javascript
+function bubbleSort(arr){
+  for(var i = arr.length; i > 0; i--){
+    for(var j = 0; j < i - 1; j++){
+      console.log(arr, arr[j], arr[j+1]);
+      if(arr[j] > arr[j+1]){
+        var temp = arr[j];
+        arr[j] = arr[j+1];
+        arr[j+1] = temp;         
+      }
+    }
+  }
+  return arr;
+}
+```
+
+either this:
+``` javascript
+function bubbleSort(arr) {
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
+
+  for (let i = arr.length; i > 0; i--) {
+    for (let j = 0; j < i - 1; j++) {
+      if (arr[j] > arr[j + 1]) {
+        swap(arr, j, j + 1);
+      }
+    }
+  }
+  return arr;
+}
+```
+least amount of loops:
+``` javascript
+function bubbleSort(arr) {
+  const swap = (arr, idx1, idx2) => {
+    [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
+  };
+  let swapped = false;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > arr[i + 1]) {
+        console.log('arr[i]', arr[i], 'arr[i + 1]', arr[i + 1])
+        swap(arr, i, i + 1);
+        swapped = true;
+      };
+    }
+  } while (swapped);
+  return arr;
+};
+```
+``` javascript
+bubbleSort([8,1,2,3,4,5,6,7]);
+```
