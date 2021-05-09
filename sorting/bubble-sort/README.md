@@ -1,6 +1,8 @@
 # Bubble sort
 goest through the array, swaps 2 values if they are in the incorrect order... repeats this over and over
 
+> It's good if you know surely that the data is almost totally sorted with 1-2 mistakes.
+
 
 #### pseudocode:
  - loop with a var from the end of array towards the beginning (this will do the loop over and over)
@@ -14,11 +16,11 @@ goest through the array, swaps 2 values if they are in the incorrect order... re
     const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
  - return the sorted array
 
+O(n^2)
 ``` javascript
 function bubbleSort(arr){
   for(var i = arr.length; i > 0; i--){
     for(var j = 0; j < i - 1; j++){
-      console.log(arr, arr[j], arr[j+1]);
       if(arr[j] > arr[j+1]){
         var temp = arr[j];
         arr[j] = arr[j+1];
@@ -30,6 +32,7 @@ function bubbleSort(arr){
 }
 ```
 
+O(n^2)
 either this:
 ``` javascript
 function bubbleSort(arr) {
@@ -47,6 +50,7 @@ function bubbleSort(arr) {
   return arr;
 }
 ```
+O(n)
 least amount of loops:
 ``` javascript
 function bubbleSort(arr) {

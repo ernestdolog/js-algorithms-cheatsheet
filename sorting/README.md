@@ -23,3 +23,5 @@ function desc (a, b) {
     return b - a;
 }
 ```
+
+[Visualgo link](https://visualgo.net/en/sorting?slide=1)
