@@ -3,6 +3,7 @@ goest through the array, swaps 2 values if they are in the incorrect order... re
 
 > It's good if you know surely that the data is almost totally sorted with 1-2 mistakes.
 
+> Quadratic sorting algorythm. time complexity: O(n^2)
 
 #### pseudocode:
  - loop with a var from the end of array towards the beginning (this will do the loop over and over)
@@ -16,7 +17,6 @@ goest through the array, swaps 2 values if they are in the incorrect order... re
     const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
  - return the sorted array
 
-O(n^2)
 ``` javascript
 function bubbleSort(arr){
   for(var i = arr.length; i > 0; i--){

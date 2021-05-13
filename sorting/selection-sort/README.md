@@ -3,6 +3,7 @@ Goes through the array over and over. Always places the currently found minimum 
 
 > It's good if you want to minimise the number of swaps you are making.
 
+> Quadratic sorting algorythm. time complexity: O(n^2)
 
 #### pseudocode:
  - store the first element as the smallest value you have seen so far
@@ -10,8 +11,6 @@ Goes through the array over and over. Always places the currently found minimum 
  - if a smaller number is found designate it as the minimum, and keep on looping till the end of the array
  - if the minimum is not the first value you designated as minimum, swap them
 
-
-O(n^2)
 ``` javascript
 function selectionSort (arr) {
   const swap = (arr, idx1, idx2) => [arr[idx1], arr[idx2]] = [arr[idx2], arr[idx1]];
