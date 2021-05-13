@@ -1,7 +1,7 @@
 # Insertion sort
 Builds up the sort by gradually creating a larger half which is always sorted.
 
-> It's good if the data is almost all sorted.
+> It's good when new data is constantly coming in and you need to maintain a sorted array.
 
 > Quadratic sorting algorythm. time complexity: O(n^2)
 
