@@ -36,8 +36,6 @@ function pivotHelper (idx, arr) {
     return idx;
 }
 
-3, 1, 2, 5, 7, 6, 8
-
 // es6 solution:
 function pivot(arr, start = 0, end = arr.length - 1) {
   const swap = (arr, idx1, idx2) => {
