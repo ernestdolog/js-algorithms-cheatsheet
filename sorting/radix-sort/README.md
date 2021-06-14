@@ -3,11 +3,14 @@ This algorythm works on binary stuff... numers and strings basically
 No direct comparisons between elements (that's where it's power comes from!)
 Uses the fact that size of a number is encoded in the digits.
 
-> time complexity: O(nk) (k means the biggest amount of digits present together in an element)
+> time complexity: O(nk) (k means the biggest amount of digits present together in an element) - if all values are distinct, than k = log(n)
+> space complexity: O(n + k)
 
 ### First step: Get Digit
 We need a function to take a number, and get it's digit at a position.
 Take the number, divide with 10^idx, floor it, than take rest from dividing by 10
+
+> Positions are counted from right to left
 
 ``` javascript
 getDigit (idx, input) {
