@@ -6,6 +6,6 @@ Contains a head, tail and length property.
 head: beginning of the list
 tail: end of the list
 
-![Singly Linked list](js-algorithms-cheatsheet/assets/pics/singly_linked_list.png)
+![Singly Linked list](assets/pics/singly_linked_list.png)
 
 > Visualgo: https://visualgo.net/en/list
