@@ -277,22 +277,5 @@ How it looks by steps:
     }
 ```
 
-    reverse(){
-      let node: Node<T> = this.head;
-      this.head = this.tail;
-      this.tail = node;
-
-      let next: Node<T>;
-      let prev: Node<T> = null;
-
-      for(let i = 0; i < this.length; i++){
-        next = node.next;
-        node.next = prev;
-        prev = node;
-        node = next;
-      }
-      return this;
-    }
-
 > Visualgo: https://visualgo.net/en/list
 
