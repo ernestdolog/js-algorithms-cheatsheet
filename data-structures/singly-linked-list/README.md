@@ -4,7 +4,7 @@ Linked list nodes/elements aren't indexed. They just contain a pointer to the ne
 
 Contains a **head** (beginning of the list), **tail** (end of the list) and **length** property.
 
-> Use case: When we have a really long list, where we care about insertion/deletion time and efficiency, and don't want random access to elements.
+> Use case: When we have a really long list, where we care about insertion/deletion time and efficiency (at the beginning of the list), and don't want random access to elements.
 
 ![Singly Linked list](https://github.com/ernestdolog/js-algorithms-cheatsheet/blob/main/assets/pics/singly_linked_list.png)
 
@@ -185,6 +185,8 @@ class SinglyLinkedList<T> {
 ## insert method:
 > Inserting a node at whatever index we specify.
 
+> O(n)
+
 How it looks by steps:
 
 ![Singly Linked list insert 1](https://github.com/ernestdolog/js-algorithms-cheatsheet/blob/main/assets/pics/singly_linked_list_inert_1.png)
@@ -274,6 +276,20 @@ How it looks by steps:
         node = next;
       }
       return this;
+    }
+```
+
+## print
+
+```javascript
+    print (): void {
+        const arr: T[] = [];
+        let current: Node<T> = this.head;
+        while(current){
+            arr.push(current.val)
+            current = current.next
+        }
+        console.log(arr);
     }
 ```
 
