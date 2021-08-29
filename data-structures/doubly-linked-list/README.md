@@ -156,6 +156,8 @@ class Node<T> {
     - from `tail` loop through the middle
     - when found return
 
+> O(n) (technically O(n/2))
+
 ```javascript
     get (idx: number): Node<T> {
         if (!idx || idx < 0 || idx >= this.length) return null;
@@ -203,6 +205,8 @@ class Node<T> {
 ## insert method:
 > create a new node, and adds it in the given index
 
+> O(1)
+
 - check for this: idx < 0, >= length and return false if they apply (empty list is also handled by this)
 - if idx === 0, `unshift` the value
 - if idx === length - 1, `push` the value
@@ -238,6 +242,8 @@ class Node<T> {
 
 ## remove method:
 > remove node from certain index
+
+> O(1)
 
 - check for this: idx < 0, >= length and return null if they apply (empty list is also handled by this)
 - if idx === 0, `shift` the idx
