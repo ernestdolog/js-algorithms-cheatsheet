@@ -1,6 +1,8 @@
 # InOrder Depth-first Tree Traversal
 Visit the entire left side, traverse the entire left side. Than the right.
 
+> To reach: loop down-down-down leftwards, save, than check the right.
+
 Basically "just change the order" of PostOrder code.
 difference is in the helper function... first we call helper fuction in it, than save the val, than we call it on the right
 
