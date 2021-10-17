@@ -12,3 +12,5 @@ At first "stage 1", than 2 and so on till the end.
 
 ## Depth-first
 Going from one end (top or bottom no matter) of the tree, and working towards the other direction.
+
+> Each are the same by **time complexity**. Space complexity differs. I noted by each how they are optimal to be used.

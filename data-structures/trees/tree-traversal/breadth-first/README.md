@@ -1,6 +1,8 @@
 # Breadth-first Tree Traversal
 Going through each stages "horizontally" of a tree.
 
+> **When to use?**: When there is a huuuuge number of nodes to keep track of. A tree more deep than wide. (By space complexity / this case it takes less space than depth-first would)
+
 ### How to:
  - create a queue to store values of visited nodes
  - place `root` node to the queue

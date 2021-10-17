@@ -3,6 +3,8 @@ Going from the root to the depth.
 
 Recursive thingy. :)
 
+> **When to use?**: When you would like to clone or store a Tree, and than recreate it from that structure. As this traversal will give you the Node val's in order from root, than it's left, than that's left and the right.
+
  - create a queue to store values from the visited Nodes
  - create a variable called `node` to store current Node... assign `root` to it
  - write a helper function that accepts a node (here the recursive funny-fun starts ^^)

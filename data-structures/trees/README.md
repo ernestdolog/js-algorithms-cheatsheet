@@ -1,5 +1,5 @@
 # Tree
-A data structure consists Node-s in a `parent`/`child` relationship.
+A non-linear data structure consists Node-s in a `parent`/`child` relationship. (it has root and child nodes)
 A Node can only point to a child (only down). If there is different directions in the data structure -> it is not a tree.
 
 Tree is a non-linear data structure.
