@@ -34,8 +34,66 @@ class BinaryHeap<T> {
 
 > No Node class here. We use an array (indexed values), and add/retreive parents/childs from the index.
 
+### private Swap
+
+```javascript
+private function swap (idx1: number, idx2: number): void {
+    [this.values[idx1], this.values[idx2]] = [this.values[idx2], this.values[idx1];
+}
+```
+
 ### Insert
 
  - add to the end
- - "bubble it up": we swap it until it finds it final correct place
-> By this **swap** I mean adding to the end, getting it's parent (from idx), and see if it's smaller/greater. In case of incorrect positioning, we swap. (f ex: 55 is added to the end, parent position has 33. We compare them, and in this case, swap.) Than again we look for next level parent. If incorrect placement, we swap... and so on till we reach the "root".
+ - "bubble it up": we swap it until it finds it final correct place 
+> By this **swap** I mean adding to the end, getting it's parent (from idx), and see if it's smaller/greater. In case of incorrect positioning, we swap (with its parent). (f ex: 55 is added to the end, parent position has 33. We compare them, and in this case, swap.) Than again we look for next level parent. If incorrect placement, we swap... and so on till we reach the "root".
+
+```javascript
+function insert(val: T): BinaryHeap<T> {
+    this.values.push(val);
+    let idx = this.values.length - 1;
+    // it can happen that we bubble up to idx 0... than just leave it
+    while (idx > 0) {
+        // index of the parent
+        const parentIdx = Math.floor( (idx - 1) / 2 );
+        // if parent is bigger we are fine, leave it...
+        if (this.values[parentIdx] >= val) break;
+        // if not, swap with parent
+        this.swap(idx, parentIdx);
+        // reorganise our idx
+        idx = parentIdx;
+    }
+    return this;
+}
+```
+
+### ExtractMax
+
+> In priority heaps this will come handy... as we need to extract first an item with bigger prio.
+
+ - swap first and last items of array
+ - remove last
+ - get children of new first item
+ loop (we always remember the new first item as we bubble it down, and loop in it)
+    - if both are smaller than it, leave it, we are good
+    - swap first item with the biggest child
+
+```javascript
+function extractMax(): BinaryHeap<T> {
+    this.swap(this.values.length, 0);
+    this.pop();
+
+    let elemIdx = 0;
+    while (elemIdx < this.values.length) {
+        const leftIdx = 2 * elemIdx + 1;
+        const rightIdx = 2 * elemIdx + 2;
+        if (this.values[leftIdx] <= this.values[elemIdx] 
+            && this.values[rightIdx] <= this.values[elemIdx]) break;
+        const swapIdx = Math.max(leftIdx, rightIdx);
+        this.swap(elemIdx, swapIdx);
+        elemIdx = swapIdx;
+    }
+
+    return this;
+}
+```
