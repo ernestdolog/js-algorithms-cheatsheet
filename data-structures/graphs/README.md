@@ -102,3 +102,158 @@ removeVertex(vertex: T): Graph<T> {
     return this;
 }
 ```
+
+# Graph traversal:
+> Welcome to the fleshy stuff! <3
+
+Traversal: Visiting every single node in the Graph. 
+But it can of course mean more practically: collecting all similar Nodes, visiting all neighbouring Nodes to a Node etc...
+
+### Depth first traversal:
+
+#### Pseudocode:
+
+- function should accept a starting node
+- create a list to store result (to be returned)
+- create object to store visited vertices (start empty)
+- create helper function which accepts a vertex
+    - if vertex empty, return
+    - should place the vertex into visited object and push it into return array
+    - loop over each values of that vertex
+    - if those haven't been visited, call helper in them recursively
+
+```javascript
+DFS(vertex: T): void {
+    if vertex is empty
+        return (base case);
+    add vertex to results list
+    mark vertex as visited
+    for each vertex in our vertexes neighbour:
+        if neighbour is not visited:
+            call (recursive) DFS in neighbour
+}
+```
+
+#### Là real code:
+
+```javascript
+depthFirstTraverse (start: T): T[] {
+    const result: T[] = [];
+    const visited: Record<T, boolean> = {};
+    const adjacencyList = this.adjacencyList;
+
+    (function dfs (vertex): void {
+        if(!vertex) return null;
+        visited[vertex] = true;
+        result.push(vertex);
+        adjacencyList[vertex].forEach(
+            neighbor => {
+                if(!visited[neighbor]){
+                    return dfs(neighbor);
+                }
+            }
+        );
+    })(start);
+
+    return result;
+}
+```
+
+### Iterative traversal:
+
+#### Pseudocode:
+
+- function should accept a starting node
+- create a Stack to help use keep track of visited Vertices (list/array)
+- create a list to store end results (what we will return)
+- create object to store visited vertices (start empty)
+- add the starting Vertex to the Stack, and mark it visited
+- while Stack has smth in it:
+    - pop next vertex from the Stack
+    - if Vertex hasn'tbeen visited yet
+        - mark it as visited
+        - add it to result list
+        - push all of its neighbours to Stack
+
+```javascript
+DFS-Iterative(start: T): void {
+    Let S be a stack!
+    S.push(start);
+    while S is not empty
+        vertex = S.pop();
+        if vertex is not labeled discovered
+            visit vertex (add to result list)
+            label vertex as discovered
+            for each of vertex`'`s neighbours
+                => neighbour do S.push(neighbour)
+}
+```
+
+#### Là real code:
+
+```javascript
+depthFirstIterativeTraverse (start: T): T[] {
+    const stack = [start];
+    const result: T[] = [];
+    const visited: Record<T, boolean> = {};
+    let currentVertex: T;
+
+    visited[start] = true;
+    while(stack?.length){
+        currentVertex = stack.pop();
+        result.push(currentVertex);
+
+        this.adjacencyList[currentVertex].forEach(
+            neighbor => {
+               if (!visited[neighbor]) {
+                   visited[neighbor] = true;
+                   stack.push(neighbor);
+               } 
+            }
+        );
+    }
+    return result;
+}
+```
+
+### Breadth first traversal:
+
+#### Pseudocode:
+
+- function should accept a starting vertex
+- create a Queue (modeling purposes an array will do it!) and put starting Vertex into it
+- create a list to store result (to be returned)
+- create object to store visited vertices (start empty)
+- mark the starting Vertex as visited
+- while Queue has smth in it:
+    - shift first Vertex from the Queue -> push it into result array (note that we don't touch visited object here)
+    - loop over each values of that vertex
+    - if those haven't been visited, push them into Queue and add them to visited object (here we are with the visited)
+
+#### Là real code:
+
+```javascript
+breadthFirstTraverse (start: T): T[]{
+    const queue: T[] = [start];
+    const result: T[] = [];
+    const visited: Record<T, boolean> = {};
+    let currentVertex: T;
+    visited[start] = true;
+
+    while (queue.length){
+        currentVertex = queue.shift();
+        result.push(currentVertex);
+           
+
+        this.adjacencyList[currentVertex].forEach(
+            neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.push(neighbor);
+                }
+            }
+        );
+    }
+    return result;
+}
+```
