@@ -257,3 +257,35 @@ breadthFirstTraverse (start: T): T[]{
     return result;
 }
 ```
+
+## Weighted graph:
+> Minimalistic example of ho to imagine the weight ordered to an Edge
+
+```javascript
+class WeightedGraph<T>{
+    adjacencyList: Record<T, {node: T, weight: number}[]>;
+
+    constructor() {
+        this.adjacencyList = {};
+    }
+
+    addVertex(vertex): {node: T, weight: number}[] {
+        if(!this.adjacencyList[vertex])
+            this.adjacencyList[vertex] = [];
+        return this.adjacencyList[vertex];
+    }
+
+    addEdge(vertex1: T,vertex2: T, weight: number): Record<T, {node: T, weight: number}[]>{
+        this.adjacencyList[vertex1]
+            .push({
+                node:vertex2,
+                weight,
+            });
+        this.adjacencyList[vertex2]
+            .push({
+                node:vertex1,
+                weight,
+            });
+    }
+}
+```
